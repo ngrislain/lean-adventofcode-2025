@@ -57,6 +57,7 @@ def updateState1 (state : State) (dir : Direction) (dist : Int) : State :=
   { state with position := newPosition, zero_count := if newPosition = 0 then state.zero_count + 1 else state.zero_count }
 
 def response1 (input : List (Direction × Int)) : IO Unit := do
+
   let mut state := initialState
   for (dir, dist) in input do {
     state := updateState1 state dir dist;
