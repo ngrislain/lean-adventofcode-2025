@@ -15,7 +15,7 @@
           |X|X|
 ```
 
-# Lean Advent of Code 2025
+# Lean [Advent of Code 2025](https://adventofcode.com/)
 
 
 To run the code, you need to have a [Lean toolchain](https://lean-lang.org/doc/reference/latest/Build-Tools-and-Distribution/Managing-Toolchains-with-Elan/) installed.
