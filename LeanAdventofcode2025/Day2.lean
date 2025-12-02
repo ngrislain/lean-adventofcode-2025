@@ -1,85 +1,79 @@
 namespace Day2
 
-inductive Direction : Type
-  | Left
-  | Right
+open List
+
+structure SplitNumber : Type where
+  left : Int
+  right : Int
+  size : Int
   deriving Repr, BEq
 
-def Direction.toChar : Direction -> Char
-  | Left => 'L'
-  | Right => 'R'
+instance : ToString SplitNumber where
+  toString sn := s!"{sn.left}|{sn.right} ({sn.size})"
 
-instance : ToString Direction where
-  toString d := d.toChar.toString
+def parseSplitNumberAbove (splitNumberStr : String) : Option SplitNumber :=
+  let splitNumberStr := "0" ++ splitNumberStr
+  let len := splitNumberStr.length
+  let size := len/2
+  let left := splitNumberStr.take (len-size)
+  let right := splitNumberStr.drop (len-size)
+  match left.toInt?, right.toInt? with
+  | some left, some right => some { left := left, right := right, size := size }
+  | _, _ =>
+    dbg_trace "Cannot parse split number above";
+    none
 
-def toDirection (c : Char) : Option Direction :=
-  match c with
-  | 'L' => some Direction.Left
-  | 'R' => some Direction.Right
+def parseSplitNumberBelow (splitNumberStr : String) : Option SplitNumber :=
+  let len := splitNumberStr.length
+  let size := len/2
+  let left := splitNumberStr.take (len-size)
+  let right := splitNumberStr.drop (len-size)
+  match left.toInt?, right.toInt? with
+  | some left, some right => some { left := left, right := right, size := size }
+  | _, _ =>
+    dbg_trace "Cannot parse split number below";
+    none
+
+structure Range : Type where
+  min : SplitNumber
+  max : SplitNumber
+  deriving Repr, BEq
+
+instance : ToString Range where
+  toString r := s!"{r.min}-{r.max}"
+
+def parseRange (rangeStr : String) : Option Range :=
+  let parts := rangeStr.splitOn "-"
+  match parts with
+  | [minStr, maxStr] =>
+    match parseSplitNumberAbove minStr, parseSplitNumberBelow maxStr with
+    | some min, some max => some { min := min, max := max }
+    | _, _ => none
   | _ => none
 
-def parseLine (line : String) : Option (Direction × Int) :=
-  if line.isEmpty then none
-  else
-    let dirOpt := toDirection line.front
-    let distStr := line.drop 1
-    match dirOpt, distStr.toInt? with
-    | some dir, some dist => some (dir, dist)
-    | _, _ => none
+def parseLine (line : String) : Option (List Range) :=
+  let rangeStrs := line.splitOn ","
+  dbg_trace rangeStrs
+  let ranges := rangeStrs.filterMap parseRange
+  return ranges
 
-def readInput : IO (List (Direction × Int)) := do
-  let content <- IO.FS.readFile "Data/Day1/input.txt"
+def readInput : IO (List Range) := do
+  let content <- IO.FS.readFile "Data/Day2/input.txt"
   let lines := content.splitOn "\n"
-  let parsed := lines.filterMap parseLine
-  return parsed
+  let ranges := (lines.filterMap parseLine).flatten
+  return ranges
 
-def readTestInput : IO (List (Direction × Int)) := do
-  let content <- IO.FS.readFile "Data/Day1/test.txt"
-  let lines := content.splitOn "\n"
-  let parsed := lines.filterMap parseLine
-  return parsed
-
-structure State : Type where
-  position : Int
-  zero_count : Int
-  deriving Repr, BEq
-
-instance : ToString State where
-  toString s := s!"(position: {s.position}, zero_count: {s.zero_count})"
-
-def initialState : State :=
-  { position := 50, zero_count := 0 }
-
-def updateState1 (state : State) (dir : Direction) (dist : Int) : State :=
-  let newPosition := match dir with
-    | Direction.Left => (state.position - dist) % 100
-    | Direction.Right => (state.position + dist) % 100
-  { state with position := newPosition, zero_count := if newPosition = 0 then state.zero_count + 1 else state.zero_count }
-
-def response1 (input : List (Direction × Int)) : IO Unit := do
-
-  let mut state := initialState
-  for (dir, dist) in input do {
-    state := updateState1 state dir dist;
+def response1 (input : List Range) : IO Unit := do
+  let mut count := 0
+  for r in input do {
+    IO.println s!"{r}"
   }
-  IO.println s!"Zero count: {state.zero_count}"
+  IO.println s!"Count: {count}"
 
-def updateState2 (state : State) (dir : Direction) (dist : Int) : State :=
-  match dir with
-  | Direction.Left =>
-    let new_position := (state.position - dist) % 100
-    let new_zero_count := (((-state.position) % 100) + dist) / 100
-    { state with position := new_position, zero_count := state.zero_count + new_zero_count }
-  | Direction.Right =>
-    let new_position := (state.position + dist) % 100
-    let new_zero_count := (state.position + dist) / 100
-    { state with position := new_position, zero_count := state.zero_count + new_zero_count }
-
-def response2 (input : List (Direction × Int)) : IO Unit := do
-  let mut state := initialState
-  for (dir, dist) in input do {
-    state := updateState2 state dir dist;
-  }
-  IO.println s!"Zero count: {state.zero_count}"
-
-end Day2
+def response2 (input : List Range) : IO Unit := do
+  let mut count := 0
+  -- for r in input do {
+  --   if r.min.left <= r.max.left and r.min.right <= r.max.right then
+  --     count := count + 1
+  -- }
+  IO.println s!"Count: {count}"
