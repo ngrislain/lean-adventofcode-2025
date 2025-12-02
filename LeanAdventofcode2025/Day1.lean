@@ -56,8 +56,8 @@ def updateState1 (state : State) (dir : Direction) (dist : Int) : State :=
     | Direction.Right => (state.position + dist) % 100
   { state with position := newPosition, zero_count := if newPosition = 0 then state.zero_count + 1 else state.zero_count }
 
-def response1 (input : List (Direction × Int)) : IO Unit := do
-
+def response1 : IO Unit := do
+  let input <- readInput
   let mut state := initialState
   for (dir, dist) in input do {
     state := updateState1 state dir dist;
@@ -75,7 +75,8 @@ def updateState2 (state : State) (dir : Direction) (dist : Int) : State :=
     let new_zero_count := (state.position + dist) / 100
     { state with position := new_position, zero_count := state.zero_count + new_zero_count }
 
-def response2 (input : List (Direction × Int)) : IO Unit := do
+def response2 : IO Unit := do
+  let input <- readInput
   let mut state := initialState
   for (dir, dist) in input do {
     state := updateState2 state dir dist;
