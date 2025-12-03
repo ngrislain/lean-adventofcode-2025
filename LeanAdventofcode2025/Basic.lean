@@ -20,7 +20,12 @@ def listRepsonses: IO Unit := do
   IO.println "Part 2:"
   Day2.response2;
   IO.println ""
-  IO.println ""
+  IO.println r" ____              _____
+|  _ \  __ _ _   _|___ /
+| | | |/ _` | | | | |_ \
+| |_| | (_| | |_| |___) |
+|____/ \__,_|\__, |____/
+             |___/       "
   IO.println "Part 1:"
   Day3.response1;
   IO.println "Part 2:"
