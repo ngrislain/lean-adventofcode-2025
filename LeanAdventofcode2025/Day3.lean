@@ -35,7 +35,7 @@ def readInput : IO (List String) := do
 def response1 : IO Unit := do
   let input <- readInput
   let sum := input.map (fun line => maxPair $ parseLine line) |> sum
-  IO.println s!"Sum: {sum}"
+  IO.println s!"Response: {sum}"
 
 def maxTwelve (line : Array Nat) : Nat :=
   let n := 12
@@ -52,6 +52,6 @@ def maxTwelve (line : Array Nat) : Nat :=
 def response2 : IO Unit := do
   let input <- readInput
   let sum := input.map (fun line => maxTwelve $ parseLine line) |> sum
-  IO.println s!"Sum: {sum}"
+  IO.println s!"Response: {sum}"
 
 end Day3

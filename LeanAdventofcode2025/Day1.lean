@@ -62,7 +62,7 @@ def response1 : IO Unit := do
   for (dir, dist) in input do {
     state := updateState1 state dir dist;
   }
-  IO.println s!"Zero count: {state.zero_count}"
+  IO.println s!"Response: {state.zero_count}"
 
 def updateState2 (state : State) (dir : Direction) (dist : Int) : State :=
   match dir with
@@ -81,6 +81,6 @@ def response2 : IO Unit := do
   for (dir, dist) in input do {
     state := updateState2 state dir dist;
   }
-  IO.println s!"Zero count: {state.zero_count}"
+  IO.println s!"Response: {state.zero_count}"
 
 end Day1

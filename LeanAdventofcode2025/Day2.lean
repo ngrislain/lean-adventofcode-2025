@@ -102,7 +102,7 @@ def readInput1 : IO (List Range) := do
 def response1 : IO Unit := do
   let input <- readInput1
   let count := input.foldl (fun acc r => acc + sumInRange r) 0
-  IO.println s!"Count: {count}"
+  IO.println s!"Response: {count}"
 
 -- Part 2
 
@@ -163,4 +163,4 @@ def response2 : IO Unit := do
         found := true
         break
     if found then continue
-  IO.println s!"Count: {total}"
+  IO.println s!"Response: {total}"
