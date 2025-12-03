@@ -1,5 +1,6 @@
 import LeanAdventofcode2025.Day1
 import LeanAdventofcode2025.Day2
+import LeanAdventofcode2025.Day3
 
 namespace Basic
 
@@ -18,4 +19,10 @@ def listRepsonses: IO Unit := do
   Day2.response1;
   IO.println "Part 2:"
   Day2.response2;
+  IO.println ""
+  IO.println ""
+  IO.println "Part 1:"
+  Day3.response1;
+  IO.println "Part 2:"
+  Day3.response2;
   return Unit.unit
