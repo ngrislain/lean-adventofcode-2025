@@ -9,6 +9,20 @@ namespace Basic
 
 
 def listRepsonses: IO Unit := do
+  IO.println r"    _\/_
+     /\
+     /\
+    /  \
+    /~~\o
+   /o   \
+  /~~*~~~\
+ o/    o \
+ /~~~~~~~~\~`
+/__*_______\
+     ||
+   \====/
+    \__/
+"
   IO.println r" ____              _
 |  _ \  __ _ _   _/ |
 | | | |/ _` | | | | |
@@ -52,4 +66,3 @@ def listRepsonses: IO Unit := do
   Day4.response1;
   IO.println "Part 2:"
   Day4.response2;
-  return Unit.unit
