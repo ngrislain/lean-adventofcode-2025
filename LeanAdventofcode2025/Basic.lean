@@ -1,6 +1,7 @@
 import LeanAdventofcode2025.Day1
 import LeanAdventofcode2025.Day2
 import LeanAdventofcode2025.Day3
+import LeanAdventofcode2025.Day4
 
 namespace Basic
 
@@ -8,13 +9,23 @@ namespace Basic
 
 
 def listRepsonses: IO Unit := do
-  IO.println "  ____              _ \n |  _ \\  __ _ _   _/ |\n | | | |/ _` | | | | |\n | |_| | (_| | |_| | |\n |____/ \\__,_|\\__, |_|\n              |___/   "
+  IO.println r" ____              _
+|  _ \  __ _ _   _/ |
+| | | |/ _` | | | | |
+| |_| | (_| | |_| | |
+|____/ \__,_|\__, |_|
+             |___/   "
   IO.println "Part 1:"
   Day1.response1;
   IO.println "Part 2:"
   Day1.response2;
   IO.println ""
-  IO.println " ____              ____  \n|  _ \\  __ _ _   _|___ \\ \n| | | |/ _` | | | | __) |\n| |_| | (_| | |_| |/ __/ \n|____/ \\__,_|\\__, |_____|\n             |___/       "
+  IO.println r" ____              ____
+|  _ \  __ _ _   _|___ \
+| | | |/ _` | | | | __) |
+| |_| | (_| | |_| |/ __/
+|____/ \__,_|\__, |_____|
+             |___/       "
   IO.println "Part 1:"
   Day2.response1;
   IO.println "Part 2:"
@@ -30,4 +41,15 @@ def listRepsonses: IO Unit := do
   Day3.response1;
   IO.println "Part 2:"
   Day3.response2;
+  IO.println ""
+  IO.println r" ____              _  _
+|  _ \  __ _ _   _| || |
+| | | |/ _` | | | | || |_
+| |_| | (_| | |_| |__   _|
+|____/ \__,_|\__, |  |_|
+             |___/        "
+  IO.println "Part 1:"
+  Day4.response1;
+  IO.println "Part 2:"
+  Day4.response2;
   return Unit.unit
