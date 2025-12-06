@@ -3,6 +3,7 @@ import LeanAdventofcode2025.Day2
 import LeanAdventofcode2025.Day3
 import LeanAdventofcode2025.Day4
 import LeanAdventofcode2025.Day5
+import LeanAdventofcode2025.Day6
 
 namespace Basic
 
@@ -78,3 +79,15 @@ def listRepsonses: IO Unit := do
   Day5.response1;
   IO.println "Part 2:"
   Day5.response2;
+  IO.println ""
+  IO.println r" ____               __
+|  _ \  __ _ _   _ / /_
+| | | |/ _` | | | | '_ \
+| |_| | (_| | |_| | (_) |
+|____/ \__,_|\__, |\___/
+             |___/       "
+  IO.println "Part 1:"
+  Day6.response1;
+  IO.println "Part 2:"
+  Day6.response2;
+  IO.println ""

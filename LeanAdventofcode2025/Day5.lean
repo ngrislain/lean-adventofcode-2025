@@ -56,17 +56,14 @@ structure Bound : Type where
   isStart : Bool
   deriving Repr, BEq
 
--- Compare events: first by position, then starts before ends
 def Bound.le (e1 e2 : Bound) : Bool :=
   if e1.pos < e2.pos then true
   else if e1.pos > e2.pos then false
-  else e1.isStart && !e2.isStart  -- At same position, starts come first
+  else e1.isStart && !e2.isStart
 
--- Convert ranges to events
 def Range.toBounds (r : Range) : List Bound :=
   [{ pos := r.min, isStart := true }, { pos := r.max + 1, isStart := false }]
 
--- Simple insertion sort for events
 def insertBound (e : Bound) : List Bound -> List Bound
   | [] => [e]
   | x :: xs => if Bound.le e x then e :: x :: xs else x :: insertBound e xs
@@ -74,7 +71,6 @@ def insertBound (e : Bound) : List Bound -> List Bound
 def sortBounds (events : List Bound) : List Bound :=
   events.foldl (fun acc e => insertBound e acc) []
 
--- Count fresh IDs using sweep line algorithm
 def countTotalFresh (ranges : List Range) : Nat :=
   let events := ranges.flatMap Range.toBounds
   let sortedEvents := sortBounds events
