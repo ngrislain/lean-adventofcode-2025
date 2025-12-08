@@ -4,6 +4,8 @@ import LeanAdventofcode2025.Day3
 import LeanAdventofcode2025.Day4
 import LeanAdventofcode2025.Day5
 import LeanAdventofcode2025.Day6
+import LeanAdventofcode2025.Day7
+import LeanAdventofcode2025.Day8
 
 namespace Basic
 
@@ -91,3 +93,52 @@ def listRepsonses: IO Unit := do
   IO.println "Part 2:"
   Day6.response2;
   IO.println ""
+  IO.println r" ____             _____
+|  _ \  __ _ _   |___  |
+| | | |/ _` | | | | / /
+| |_| | (_| | |_| |/ /
+|____/ \__,_|\__, /_/
+             |___/      "
+  IO.println "Part 1:"
+  Day7.response1;
+  IO.println "Part 2:"
+  Day7.response2;
+  IO.println ""
+  IO.println r" ____               ___
+|  _ \  __ _ _   _ ( _ )
+| | | |/ _` | | | |/ _ \
+| |_| | (_| | |_| | (_) |
+|____/ \__,_|\__, |\___/
+             |___/       "
+  IO.println "Part 1:"
+  Day8.response1;
+  IO.println "Part 2:"
+  Day8.response2;
+--   IO.println ""
+--   IO.println r" ____               ___
+-- |  _ \  __ _ _   _ / _ \
+-- | | | |/ _` | | | | (_) |
+-- | |_| | (_| | |_| |\__, |
+-- |____/ \__,_|\__, |  /_/
+--              |___/       "
+--   IO.println ""
+--   IO.println r" ____              _  ___
+-- |  _ \  __ _ _   _/ |/ _ \
+-- | | | |/ _` | | | | | | | |
+-- | |_| | (_| | |_| | | |_| |
+-- |____/ \__,_|\__, |_|\___/
+--              |___/         "
+--   IO.println ""
+--   IO.println r" ____              _ _
+-- |  _ \  __ _ _   _/ / |
+-- | | | |/ _` | | | | | |
+-- | |_| | (_| | |_| | | |
+-- |____/ \__,_|\__, |_|_|
+--              |___/     "
+--   IO.println ""
+--   IO.println r" ____              _ ____
+-- |  _ \  __ _ _   _/ |___ \
+-- | | | |/ _` | | | | | __) |
+-- | |_| | (_| | |_| | |/ __/
+-- |____/ \__,_|\__, |_|_____|
+--              |___/         "
