@@ -160,6 +160,4 @@ def listRepsonses: IO Unit := do
              |___/         "
   IO.println "Part 1:"
   Day12.response1;
-  IO.println "Part 2:"
-  Day12.response2;
   IO.println ""
